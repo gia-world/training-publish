@@ -1,0 +1,44 @@
+@mixin font($s, $w: null, $f: null) {
+  font: {
+    family: $f;
+    size: $s;
+    weight: $w;
+  }
+}
+
+@mixin after($w, $h) {
+  position: relative;
+
+  &::after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: $w;
+    height: $h;
+    @content;
+  }
+}
+
+@mixin before($w, $h) {
+  position: relative;
+
+  &::before {
+    display: block;
+    position: absolute;
+    content: "";
+    width: $w;
+    height: $h;
+    @content;
+  }
+}
+
+@mixin bg($url, $po: center center, $si: cover) {
+  background: {
+    image: url("../img/event/#{$url}");
+    repeat: no-repeat;
+    position: $po;
+    size: $si;
+  }
+
+  @content;
+}
