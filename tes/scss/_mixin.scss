@@ -10,7 +10,7 @@
   position: relative;
 
   &::after {
-    display: block;
+    // display: block;
     position: absolute;
     content: "";
     width: $w;
@@ -23,7 +23,7 @@
   position: relative;
 
   &::before {
-    display: block;
+    // display: block;
     position: absolute;
     content: "";
     width: $w;
