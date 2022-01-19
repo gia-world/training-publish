@@ -1,2 +1,104 @@
 @import "_reset";
 @import "_mixin";
+
+/* common */
+[class*="__inner"] {
+  @include layout;
+}
+
+/* header */
+.header {
+  background-color: pink;
+  &__inner {
+    @include ib-parent(95px);
+
+    .logo {
+      @include ib-child();
+      padding-right: 60px;
+    }
+
+    .sub-menu {
+      @include ib-child(null, 0);
+      padding-right: 160px;
+      padding-top: 10px;
+      > li {
+        @include ib-child();
+        > a {
+          padding: 0 10px;
+          font-size: 11px;
+          color: #828282;
+        }
+      }
+    }
+
+    .gnb {
+      @include ib-child();
+      padding-top: 10px;
+      .depth1-wrap {
+        font-size: 0;
+        .depth1 {
+          @include ib-child();
+          > a {
+            padding: 0 20px;
+            font-size: 17px;
+            font-weight: 700;
+          }
+        }
+      }
+      .depth2-wrap {
+        display: none;
+      }
+    }
+  }
+}
+
+/* main */
+.visual {
+  height: 500px;
+  background-color: antiquewhite;
+}
+
+.business {
+  @include ib-parent(240px);
+  background-color: #eee;
+  &__main {
+    width: 25%;
+    @include ib-child();
+  }
+  &__tit {
+    width: 200px;
+    margin-bottom: 10px;
+    padding: 20px 0;
+    border-bottom: 1px solid #b2b2b2;
+    font-size: 20px;
+    ~ p {
+      width: 230px;
+      margin-bottom: 20px;
+      line-height: 19px;
+    }
+  }
+  &__btn {
+    display: inline-block;
+    width: 158px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    background-color: #ae9874;
+    color: #fff;
+  }
+  &__sub {
+    width: 75%;
+    height: 100%;
+    @include ib-child(null, 0);
+    > li {
+      width: 25%;
+      height: 100%;
+      @include ib-child();
+      text-align: center;
+      background-color: aquamarine;
+      img {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

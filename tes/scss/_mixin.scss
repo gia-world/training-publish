@@ -42,3 +42,21 @@
 
   @content;
 }
+
+@mixin ib-parent($h, $fs: 0) {
+  height: $h;
+  line-height: $h;
+  font-size: $fs;
+}
+
+@mixin ib-child($lh: 12px, $fs: 12px) {
+  display: inline-block;
+  line-height: $lh;
+  vertical-align: middle;
+  font-size: $fs;
+}
+
+@mixin layout {
+  width: 1200px;
+  margin: 0 auto;
+}
