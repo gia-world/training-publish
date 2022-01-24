@@ -10,7 +10,6 @@
   position: relative;
 
   &::after {
-    // display: block;
     position: absolute;
     content: "";
     width: $w;
@@ -23,7 +22,6 @@
   position: relative;
 
   &::before {
-    // display: block;
     position: absolute;
     content: "";
     width: $w;
@@ -34,12 +32,11 @@
 
 @mixin bg($url, $po: center center, $si: cover) {
   background: {
-    image: url("../img/event/#{$url}");
+    image: url("#{$url}");
     repeat: no-repeat;
     position: $po;
     size: $si;
   }
-
   @content;
 }
 
