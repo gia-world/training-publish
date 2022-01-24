@@ -16,6 +16,7 @@
       @include ib-child();
       padding-right: 60px;
     }
+    // 이 안에서 수직 위치 조정하려면?
 
     .sub-menu {
       @include ib-child(null, null);
@@ -68,6 +69,7 @@
   &__inner {
     @include ib-parent(240px);
   }
+  //business main 시작
   &__main {
     width: 25%;
     @include ib-child();
@@ -76,7 +78,8 @@
   &__tit {
     width: 200px;
     margin-bottom: 10px;
-    padding: 20px 0;
+    padding: 10px 0;
+    line-height: normal;
     border-bottom: 1px solid #b2b2b2;
     font-size: 20px;
     ~ p {
@@ -94,6 +97,7 @@
     background-color: #ae9874;
     color: #fff;
   }
+  //business main 끝
   &__sub {
     width: 75%;
     height: 100%;
@@ -128,6 +132,7 @@
     margin: 30px auto 25px;
     background-color: #f6f6f6;
   }
+  //notice main 시작
   &__main {
     width: 25%;
     height: 100%;
@@ -176,6 +181,7 @@
       }
     }
   }
+  //notice main 끝
   &__sub {
     width: 75%;
     height: 100%;
@@ -211,6 +217,7 @@
         &:not(:last-of-type) {
           margin-right: 10px;
         }
+        //??
         // + span {
         //   margin-right: 10px;
         // }
