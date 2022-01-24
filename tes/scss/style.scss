@@ -18,9 +18,8 @@
     }
 
     .sub-menu {
-      @include ib-child(null, 0);
+      @include ib-child(null, null);
       padding-right: 160px;
-      padding-top: 10px;
       > li {
         @include ib-child();
         > a {
@@ -32,10 +31,8 @@
     }
 
     .gnb {
-      @include ib-child();
-      padding-top: 10px;
+      @include ib-child(null, null);
       .depth1-wrap {
-        font-size: 0;
         .depth1 {
           @include ib-child();
           > a {
@@ -59,11 +56,14 @@
 }
 
 .business {
-  @include ib-parent(240px);
   background-color: #eee;
+  &__inner {
+    @include ib-parent(240px);
+  }
   &__main {
     width: 25%;
     @include ib-child();
+    background-color: thistle;
   }
   &__tit {
     width: 200px;
@@ -89,16 +89,83 @@
   &__sub {
     width: 75%;
     height: 100%;
-    @include ib-child(null, 0);
+    @include ib-child(null, null);
+    background-color: aliceblue;
     > li {
       width: 25%;
       height: 100%;
-      @include ib-child();
+      display: inline-block;
       text-align: center;
       background-color: aquamarine;
-      img {
-        margin-bottom: 10px;
+      a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        border: 1px solid;
+        vertical-align: middle;
+        figure {
+          @include ib-child();
+          img {
+            margin-bottom: 10px;
+          }
+        }
       }
+    }
+  }
+}
+
+.notice {
+  &__inner {
+    @include ib-parent(220px);
+    margin: 30px auto 25px;
+    background-color: #f6f6f6;
+  }
+  &__main {
+    width: 25%;
+    height: 100%;
+    @include ib-child();
+    padding: 20px;
+    border: 1px solid;
+  }
+  &__sub {
+    width: 75%;
+    height: 100%;
+    @include ib-child(null, null);
+    > li {
+      display: inline-block;
+      width: calc(100% / 3);
+      height: 100%;
+      background-color: tomato;
+      a {
+        width: 100%;
+        height: 100%;
+        @include ib-child();
+        padding: 20px;
+        border: 1px solid;
+      }
+    }
+  }
+}
+
+/* footer */
+.footer {
+  background-color: #464b4e;
+  overflow: hidden;
+  &__inner {
+    margin: 30px auto 60px;
+    line-height: 24px;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    color: #fff;
+    address {
+      span {
+        // + span {
+        //   margin-right: 10px;
+        // }
+      }
+    }
+    .copyright img {
+      vertical-align: sub;
     }
   }
 }
