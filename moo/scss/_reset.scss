@@ -1,14 +1,14 @@
 /* default */
 * {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 html,
 body {
-  font-size: 62.5%;
-  line-height: 1.285;
+    font-size: 62.5%;
+    line-height: 1.285;
 }
 h1,
 h2,
@@ -20,27 +20,27 @@ dl,
 dd,
 dt,
 ol {
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", "Noto Sans KR", "sans-serif";
-  word-wrap: break-word;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", "Noto Sans KR", "sans-serif";
+    word-wrap: break-word;
 }
 ul,
 li,
 dl,
 dd,
 dt {
-  list-style-type: none;
+    list-style-type: none;
 }
 img,
 fieldset {
-  border: 0;
-  max-width: 100%;
+    border: 0;
+    max-width: 100%;
 }
 form,
 fieldset {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 header,
@@ -49,29 +49,29 @@ article,
 aside,
 footer,
 nav {
-  display: block;
+    display: block;
 }
 
 fieldset {
-  display: block;
-  margin: 0;
-  border: 0;
-  padding: 0;
+    display: block;
+    margin: 0;
+    border: 0;
+    padding: 0;
 }
 
 pre {
-  white-space: pre-wrap;
+    white-space: pre-wrap;
 }
 
 img {
-  max-width: 100%;
-  border: 0;
+    max-width: 100%;
+    border: 0;
 }
 
 ul,
 li,
 ol {
-  list-style: none;
+    list-style: none;
 }
 
 h1,
@@ -81,7 +81,7 @@ h4,
 h5,
 h6,
 dd {
-  margin: 0;
+    margin: 0;
 }
 
 a,
@@ -89,87 +89,87 @@ select,
 button,
 input,
 textarea {
-  font-family: inherit;
+    font-family: inherit;
 }
 
 button,
 input[type="submit"] {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  background: transparent;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    background: transparent;
 }
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
+    border: 0;
+    padding: 0;
 }
 
 input,
 select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  border: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
 }
 select::-ms-expand {
-  display: none; /* IE 10, 11 */
+    display: none; /* IE 10, 11 */
 }
 /* reset */
 input,
 textarea,
 button,
 select {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 img,
 fieldset,
 button {
-  border: 0;
+    border: 0;
 }
 textarea {
-  overflow: auto;
+    overflow: auto;
 }
 input[type="submit"],
 input[type="button"],
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
 img {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 address,
 em {
-  font-style: normal;
+    font-style: normal;
 }
 table {
-  border-spacing: 0;
-  border-collapse: collapse;
+    border-spacing: 0;
+    border-collapse: collapse;
 }
 table,
 th,
 td {
-  border: none;
+    border: none;
 }
 caption {
-  overflow: hidden;
-  line-height: 0;
-  text-indent: -2000em;
+    overflow: hidden;
+    line-height: 0;
+    text-indent: -2000em;
 }
 legend,
 .hidden {
-  padding: 0;
-  margin: 0;
-  overflow: hidden !important;
-  text-indent: 100%;
-  white-space: nowrap;
-  font-size: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden !important;
+    text-indent: 100%;
+    white-space: nowrap;
+    font-size: 0;
 }
 i {
-  font-style: normal;
+    font-style: normal;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -184,54 +184,54 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+    display: block;
 }
 figure {
-  padding: 0px;
-  margin: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 /* 링크 기본값 */
 a:link {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    // color: inherit;
 }
 a:visited {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    // color: inherit;
 }
 a:hover {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    // color: inherit;
 }
 a:active {
-  text-decoration: none;
+    text-decoration: none;
 }
 a:focus {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 /* 리스트 스타일 제거 */
 ul,
 ol,
 li {
-  list-style: none;
+    list-style: none;
 }
 
 /* mobile */
 body {
-  -webkit-text-size-adjust: none;
-  -moz-text-size-adjust: none;
-  -ms-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
 }
 
 /* hidden */
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }

@@ -11,79 +11,155 @@ dl,
 dd,
 dt,
 ol {
-  font-family: "Trebuchet MS", Trebuchet, "Liberation Sans", sans-serif;
+    font-family: "Trebuchet MS", Trebuchet, "Liberation Sans", sans-serif;
 }
 
 //공통부분
 .moo section {
-  //   overflow: hidden;
-  &:nth-of-type(2n-1) {
-    background-color: azure;
-  }
-  &:nth-of-type(2n) {
-    background-color: #f3f4f6;
-  }
+    //   overflow: hidden;
+    &:nth-of-type(2n-1) {
+        background-color: azure;
+    }
+    &:nth-of-type(2n) {
+        background-color: #f3f4f6;
+    }
 }
 //이너 세팅
 .moo__inner {
-  width: 120rem;
-  margin: 0 auto;
-  padding: 4rem 0;
+    width: 120rem;
+    margin: 0 auto;
+    padding: 5rem 0;
 }
 
 //텍스트 세팅
 [class*="__tit"] {
-  text-align: center;
-  font-size: 3rem;
-  color: #323c49;
-  ~ p {
     text-align: center;
-    font-size: 1.8rem;
-    color: #434f61;
-  }
+    font-size: 3rem;
+    color: #323c49;
+    + p:not(.noted__desc) {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 1.8rem;
+        color: #434f61;
+        + .ib-list {
+            margin-top: 3rem;
+        }
+    }
 }
 [class*="__sub-tit"] {
-  line-height: 1.15;
-  font-size: 1.8rem;
-  color: #323c49;
+    line-height: 1.15;
+    font-size: 1.8rem;
+    color: #323c49;
 }
 [class*="__desc"] {
-  line-height: 1.5;
-  @include font(1.4rem, null, "Verdana, Geneva, sans-serif");
-  color: #434f61;
+    line-height: 1.5;
+    @include font(1.4rem, null, "Verdana, Geneva, sans-serif");
+    color: #434f61;
 }
 
 //인라인 블락 세팅
 .ib-list {
-  &.icon-type {
-    @include ib-parent(18rem);
-  }
-  &.card-type {
-    @include ib-parent(37rem);
-  }
-  > li {
-    @include ib-child();
-  }
+    &.icon-type {
+        @include ib-parent(18rem);
+    }
+    &.card-type {
+        @include ib-parent(37rem);
+    }
+    > li {
+        @include ib-child();
+    }
 }
 
 //아이콘 타입 리스트
 .icon-type {
-  > li {
-    width: 25%;
-    padding: 0 3rem;
-    // background-color: aquamarine;
-    border: 1px solid;
-    text-align: center;
-  }
-  &__img {
-  }
-  &__sub-tit {
-    margin-top: 1.2rem;
-  }
-  &__desc {
-    margin-top: 1rem;
-  }
+    > li {
+        width: 25%;
+        padding: 0 3rem;
+        // background-color: aquamarine;
+        border: 1px solid;
+        text-align: center;
+    }
+    // &__img {
+    // }
+    &__sub-tit {
+        margin-top: 1.2rem;
+    }
+    &__desc {
+        margin-top: 1rem;
+    }
 }
 
 .card-type {
+    background-color: antiquewhite;
+    > li {
+        width: calc(25% - 1.8rem);
+        border: 1px solid;
+        + li {
+            margin-left: 2.4rem;
+        }
+        dl {
+            padding: 1.8rem;
+            background-color: #fff;
+        }
+    }
+    &__img {
+        max-height: 12rem;
+        overflow: hidden;
+    }
+    &__sub-tit {
+        + .card-type__desc {
+            margin-top: 0.8rem;
+        }
+    }
+    &__desc {
+        height: 15rem;
+    }
+}
+
+.moo {
+    &__shop-link {
+        font-size: 1.5rem;
+        color: #107c5d;
+        i {
+            margin-left: 1rem;
+        }
+    }
+    &__btn {
+        display: inline-block;
+        margin-top: 4rem;
+        padding: 1rem 2.4rem;
+        background-color: #107c5d;
+        font-size: 1.6rem;
+        color: #fff;
+        border-radius: 6px;
+    }
+}
+
+.noted {
+    .moo__inner {
+        @include ib-parent(50rem);
+        padding: 0;
+        text-align: right;
+    }
+    &__txt-box {
+        @include ib-child(3rem, 3rem);
+        width: 43rem;
+        padding: 5rem;
+        text-align: left;
+        background-color: #fff;
+    }
+    &__tit {
+        text-align: left;
+    }
+    &__desc {
+        margin-top: 1rem;
+    }
+    .moo__shop-link {
+        display: block;
+        margin-top: 3rem;
+    }
+}
+
+.business {
+    text-align: center;
 }
