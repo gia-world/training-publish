@@ -67,6 +67,7 @@ ol {
     }
     > li {
         @include ib-child();
+        border: 1px solid;
     }
 }
 
@@ -76,7 +77,6 @@ ol {
         width: 25%;
         padding: 0 3rem;
         // background-color: aquamarine;
-        border: 1px solid;
         text-align: center;
     }
     // &__img {
@@ -93,7 +93,6 @@ ol {
     background-color: antiquewhite;
     > li {
         width: calc(25% - 1.8rem);
-        border: 1px solid;
         + li {
             margin-left: 2.4rem;
         }
