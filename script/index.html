@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button>add</button>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        const $li_items = document.querySelectorAll('ul>li');//
+        const $input = document.querySelector('input');
+
+        console.log($li_items);
+
+        // $li_items[0].addEventListener('click')
+
+        $li_items.forEach(item => item.addEventListener('click', () => {
+            item.classList.add('dddd');
+            item.classList.remove('dddd')
+            item.classList.contains('dddd')
+        }))
+
+        // appendChild
+        // document.createElement
+
+    </script>
+</body>
+
+</html>
