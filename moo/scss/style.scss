@@ -11,154 +11,243 @@ dl,
 dd,
 dt,
 ol {
-    font-family: "Trebuchet MS", Trebuchet, "Liberation Sans", sans-serif;
+  font-family: "Trebuchet MS", Trebuchet, "Liberation Sans", sans-serif;
 }
 
 //공통부분
 .moo section {
-    //   overflow: hidden;
-    &:nth-of-type(2n-1) {
-        background-color: azure;
-    }
-    &:nth-of-type(2n) {
-        background-color: #f3f4f6;
-    }
+  &:nth-of-type(2n-1) {
+    background-color: azure;
+  }
+  &:nth-of-type(2n) {
+    background-color: #f3f4f6;
+  }
 }
 //이너 세팅
 .moo__inner {
-    width: 120rem;
-    margin: 0 auto;
-    padding: 5rem 0;
+  width: 120rem;
+  margin: 0 auto;
+  padding: 5rem 0;
 }
 
 //텍스트 세팅
 [class*="__tit"] {
+  text-align: center;
+  font-size: 3rem;
+  color: #323c49;
+  + p:not(.noted__desc) {
+    margin-top: 1rem;
     text-align: center;
-    font-size: 3rem;
-    color: #323c49;
-    + p:not(.noted__desc) {
-        margin-top: 1rem;
-        text-align: center;
-        font-size: 1.8rem;
-        color: #434f61;
-        + .ib-list {
-            margin-top: 3rem;
-        }
+    font-size: 1.8rem;
+    color: #434f61;
+    + .ib-list {
+      margin-top: 3rem;
     }
+  }
 }
 [class*="__sub-tit"] {
-    line-height: 1.15;
-    font-size: 1.8rem;
-    color: #323c49;
+  line-height: 1.15;
+  font-size: 1.8rem;
+  color: #323c49;
 }
 [class*="__desc"] {
-    line-height: 1.5;
-    @include font(1.4rem, null, "Verdana, Geneva, sans-serif");
-    color: #434f61;
+  line-height: 1.5;
+  @include font(1.4rem, null, "Verdana, Geneva, sans-serif");
+  color: #434f61;
 }
 
 //인라인 블락 세팅
 .ib-list {
-    &.icon-type {
-        @include ib-parent(18rem);
-    }
-    &.card-type {
-        @include ib-parent(37rem);
-    }
-    > li {
-        @include ib-child();
-        border: 1px solid;
-    }
+  &.icon-type {
+    @include ib-parent(18rem);
+  }
+  &.card-type {
+    @include ib-parent(37rem);
+  }
+  &.review-type {
+    display: inline-block;
+    @include ib-parent(14rem);
+  }
+  &.star-wrap {
+    @include ib-parent(2rem);
+  }
+  > li {
+    @include ib-child();
+    border: 1px solid;
+  }
 }
 
 //아이콘 타입 리스트
 .icon-type {
-    > li {
-        width: 25%;
-        padding: 0 3rem;
-        // background-color: aquamarine;
-        text-align: center;
-    }
-    // &__img {
-    // }
-    &__sub-tit {
-        margin-top: 1.2rem;
-    }
-    &__desc {
-        margin-top: 1rem;
-    }
+  > li {
+    width: 25%;
+    padding: 0 3rem;
+    // background-color: aquamarine;
+    text-align: center;
+  }
+  // &__img {
+  // }
+  &__sub-tit {
+    margin-top: 1.2rem;
+  }
+  &__desc {
+    margin-top: 1rem;
+  }
 }
 
 .card-type {
-    background-color: antiquewhite;
-    > li {
-        width: calc(25% - 1.8rem);
-        + li {
-            margin-left: 2.4rem;
-        }
-        dl {
-            padding: 1.8rem;
-            background-color: #fff;
-        }
+  background-color: antiquewhite;
+  > li {
+    width: calc(25% - 1.8rem);
+    + li {
+      margin-left: 2.4rem;
     }
-    &__img {
-        max-height: 12rem;
-        overflow: hidden;
+    dl {
+      padding: 1.8rem;
+      background-color: #fff;
     }
-    &__sub-tit {
-        + .card-type__desc {
-            margin-top: 0.8rem;
-        }
+  }
+  &__img {
+    max-height: 12rem;
+    overflow: hidden;
+  }
+  &__sub-tit {
+    + .card-type__desc {
+      margin-top: 0.8rem;
     }
-    &__desc {
-        height: 15rem;
-    }
+  }
+  &__desc {
+    height: 15rem;
+  }
 }
 
 .moo {
-    &__shop-link {
-        font-size: 1.5rem;
-        color: #107c5d;
-        i {
-            margin-left: 1rem;
-        }
+  &__shop-link {
+    font-size: 1.5rem;
+    color: #107c5d;
+    i {
+      margin-left: 1rem;
     }
-    &__btn {
-        display: inline-block;
-        margin-top: 4rem;
-        padding: 1rem 2.4rem;
-        background-color: #107c5d;
-        font-size: 1.6rem;
-        color: #fff;
-        border-radius: 6px;
-    }
+  }
+  &__btn {
+    display: inline-block;
+    margin-top: 4rem;
+    padding: 1rem 2.4rem;
+    background-color: #107c5d;
+    font-size: 1.6rem;
+    color: #fff;
+    border-radius: 6px;
+  }
 }
 
 .noted {
-    .moo__inner {
-        @include ib-parent(50rem);
-        padding: 0;
-        text-align: right;
-    }
-    &__txt-box {
-        @include ib-child(3rem, 3rem);
-        width: 43rem;
-        padding: 5rem;
-        text-align: left;
-        background-color: #fff;
-    }
-    &__tit {
-        text-align: left;
-    }
-    &__desc {
-        margin-top: 1rem;
-    }
-    .moo__shop-link {
-        display: block;
-        margin-top: 3rem;
-    }
+  .moo__inner {
+    @include ib-parent(50rem);
+    padding: 0;
+    text-align: right;
+  }
+  &__txt-box {
+    @include ib-child(3rem, 3rem);
+    width: 43rem;
+    padding: 5rem;
+    text-align: left;
+    background-color: #fff;
+  }
+  &__tit {
+    text-align: left;
+  }
+  &__desc {
+    margin-top: 1rem;
+  }
+  .moo__shop-link {
+    display: block;
+    margin-top: 3rem;
+  }
 }
 
 .business {
+  text-align: center;
+}
+
+.review {
+  .moo__inner {
+    @include ib-parent(28rem);
+    padding: 0;
+    @include after(3rem, 3rem) {
+      border: 1px solid;
+      border-radius: 3rem;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  &__fixed {
+    @include ib-child(2rem, 2rem);
+    width: 25%;
     text-align: center;
+    background-color: coral;
+    .fixed-tit {
+      + .star-wrap {
+        height: 3rem;
+        margin-top: 1.5rem;
+        line-height: 3rem;
+        > li {
+          width: 3rem;
+        }
+        + p {
+          margin-top: 1.5rem;
+          line-height: 1.6rem;
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+.review-type {
+  width: 70%;
+  background-color: darkgoldenrod;
+  > li {
+    width: calc((100% / 3) - 0.8rem);
+    position: relative;
+    + li {
+      margin-left: 1.2rem;
+    }
+  }
+  .review-tit {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1.8rem;
+  }
+  .review-desc {
+    margin-top: 0.8rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    line-height: 1.2;
+  }
+  .review-author {
+    margin-top: 1rem;
+    opacity: 0.6;
+  }
+  .date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.6;
+  }
+}
+
+.star-wrap {
+  .star {
+    width: 2rem;
+    height: 100%;
+    line-height: inherit;
+    background-color: #50cda4;
+    + .star {
+      margin-left: 0.5rem;
+    }
+  }
 }

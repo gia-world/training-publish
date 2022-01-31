@@ -46,7 +46,7 @@
   font-size: $fs;
 }
 
-@mixin ib-child($lh: 12px, $fs: 12px) {
+@mixin ib-child($lh: 1.4rem, $fs: 1.4rem) {
   display: inline-block;
   line-height: $lh;
   vertical-align: middle;
