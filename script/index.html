@@ -35,6 +35,38 @@
         // appendChild
         // document.createElement
 
+        //버튼을 누르면 li가 추가 되게 하기
+        // 버튼을 누르면
+        const $btn = document.querySelector('button');
+
+        $btn.addEventListener('click', function () {
+            // console.log('click'); //working
+
+            //li 추가 하기
+            const $li = document.createElement('li');
+            // document.querySelector('ul').appendChild('$li');
+            //Failed to execute 'appendChild' on 'Node': parameter 1 is not of type 'Node'.
+
+            // document.querySelector('ul').appendChild('$li'); -> element node 가 필요함 string x .. $li는 엘리먼트 아닌가?
+            // document.querySelector('ul').append('lii'); -> string o
+
+            // $li.innerHTML="(current)"; //??? 왜 이걸?  https://dzzienki.tistory.com/77
+
+            // console.log($li); //<li></li>
+            // $li.innerHTML="1";
+            // console.log($li); // 56의 콘솔로그도 <li>1</li> ?
+
+            document.querySelector('ul').appendChild($li); // 작은따옴표 생략....!!!
+
+            //인풋 값 가져와서 넣어보기?
+            const txt = $input.value;
+            console.log(txt);
+            $li.innerText = txt;
+
+            //하고나면 인풋 창 지우기
+            $input.value = null;
+        })
+
     </script>
 </body>
 
