@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="submit">
+        <input type="text">
+        <button type="submit">add</button>
+    </form>
+
+    <h1></h1>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        const $li_items = document.querySelectorAll('ul>li');//
+        const $input = document.querySelector('input');
+        const $h1 = document.querySelector('h1');
+
+
+        console.log($li_items);
+
+        // $li_items[0].addEventListener('click')
+        const aaaa = (e, item) => {
+            console.log(e.target.innerText)
+            item.classList.add('dddd');
+            item.classList.remove('dddd')
+            item.classList.contains('dddd')
+            $h1.innerText = e.target.innerText
+        }
+        $li_items.forEach(item => item.addEventListener('click', (e) => {
+            aaaa(e, item)
+
+        }))
+
+        const abc = () => { }
+        const bbb = {
+            손: {
+                집기: () => { },
+                피기: () => { },
+
+            }
+        }
+        bbb.abc()
+        // appendChild
+        // document.createElement
+
+        //버튼을 누르면 li가 추가 되게 하기
+        // 버튼을 누르면
+        const $form = document.querySelector('form');
+
+        $form.addEventListener('submit', function (e) {
+            e.preventDefault()
+            // console.log('click'); //working
+
+
+            //li 추가 하기
+            const $li = document.createElement('li');
+            // document.querySelector('ul').appendChild('$li');
+            //Failed to execute 'appendChild' on 'Node': parameter 1 is not of type 'Node'.
+
+            // document.querySelector('ul').appendChild('$li'); -> element node 가 필요함 string x .. $li는 엘리먼트 아닌가?
+            // document.querySelector('ul').append('lii'); -> string o
+
+            // $li.innerHTML="(current)"; //??? 왜 이걸?  https://dzzienki.tistory.com/77
+
+            // console.log($li); //<li></li>
+            // $li.innerHTML="1";
+            // console.log($li); // 56의 콘솔로그도 <li>1</li> ?
+
+            document.querySelector('ul').appendChild($li); // 작은따옴표 생략....!!!
+
+            //인풋 값 가져와서 넣어보기?
+            const txt = $input.value;
+            console.log(txt);
+            $li.innerText = txt;
+
+            //하고나면 인풋 창 지우기
+            $input.value = null;
+        })
+
+    </script>
+
+</body>
+
+</html>
