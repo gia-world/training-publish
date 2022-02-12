@@ -1,0 +1,65 @@
+@import "_reset";
+@import "_mixin";
+
+//common
+body {
+  font-size: 1.6rem;
+}
+
+//style
+
+$header-h: 4.4rem;
+
+.header {
+  position: fixed;
+  width: 100%;
+  height: $header-h;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  .gnb {
+    max-width: 98rem;
+    height: 100%;
+    margin: 0 auto;
+    > ul {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: space-between;
+      li {
+        height: 100%;
+        a {
+          display: inline-flex;
+          height: 100%;
+          align-items: center;
+          padding: 0 1rem;
+          font-size: 1.2rem;
+          background-color: rgba(240, 255, 255, 0.2);
+        }
+        .logo {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.contents {
+  padding-top: $header-h;
+
+  .bnr {
+    background-color: azure;
+    p {
+      padding: 1.2rem 0;
+      text-align: center;
+      font-size: 1.4rem;
+      a {
+        color: cornflowerblue;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  
+}
