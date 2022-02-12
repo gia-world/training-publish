@@ -61,5 +61,119 @@ $header-h: 4.4rem;
     }
   }
 
-  
+  article.division {
+    display: flex;
+    justify-content: space-between;
+  }
+  section {
+    .section__inner {
+      height: 58rem;
+      padding-top: 5rem;
+      text-align: center;
+      background-color: antiquewhite;
+    }
+    + section.wide {
+      margin-top: 1rem;
+    }
+
+    .title {
+      &-type1 {
+        font-size: 5.6rem;
+        font-weight: 600;
+      }
+      &-type2 {
+        font-size: 4rem;
+      }
+
+      @at-root [class*="title-"] {
+        border: 1px solid;
+        + .sub-tit {
+          margin-top: 0.6rem;
+        }
+        &.extra {
+          margin-top: -0.8rem;
+          line-height: 1em;
+          span {
+            display: inline-block;
+            font-size: 2rem;
+            &.new {
+              color: goldenrod;
+              font-weight: 300;
+            }
+            &.series {
+              color: brown;
+            }
+          }
+        }
+      }
+    }
+    .sub-tit {
+      font-size: 2.8rem;
+    }
+
+    .link-wrap {
+      margin-top: 2rem;
+      > a {
+        background-color: #fff;
+        font-size: 2rem;
+        color: cornflowerblue;
+        &:hover {
+          span {
+            text-decoration: underline;
+          }
+        }
+        span {
+          + i {
+            padding-left: 0.8rem;
+            &::after {
+              content: ">";
+            }
+          }
+        }
+        + a {
+          margin-left: 2rem;
+        }
+      }
+    }
+    &.wide {
+    }
+    &.movie {
+      .section__inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: 3rem;
+      }
+      .movie-tit {
+        line-height: 1em;
+        .eng {
+          text-transform: uppercase;
+          font-size: 4rem;
+        }
+      }
+      .movie-key {
+        font-size: 2rem;
+        font-weight: 700;
+        + .movie-link {
+          margin-top: 1rem;
+        }
+      }
+      .movie-link {
+        display: inline-block;
+      }
+    }
+    &.narrow {
+      width: calc(50% - 0.5rem);
+      height: 62rem;
+      margin-top: 1rem;
+      .title-type2 {
+        // max-width: 40rem;
+        padding: 0 10rem;
+        word-break: keep-all;
+      }
+      .sub-tit {
+        font-size: 2.1rem;
+      }
+    }
+  }
 }
