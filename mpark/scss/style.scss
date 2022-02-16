@@ -1,0 +1,14 @@
+@import "_reset";
+@import "_mixin";
+
+.section__inner{
+
+  &.info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    >[class*="-box"]{
+      background-color: cornflowerblue;
+    }
+  }
+}
