@@ -18,15 +18,14 @@ $header-h: 4.4rem;
   color: #fff;
   &__inner {
     display: flex;
-    justify-content: space-between;
-    max-width: 1024px;
+    justify-content: center;
+    max-width: 98rem;
     height: 100%;
     margin: 0 auto;
   }
-  .gnb {
-    // max-width: 98rem;
+  .gnb,
+  .etc {
     height: 100%;
-    // margin: 0 auto;
     > ul {
       display: flex;
       height: 100%;
@@ -41,9 +40,6 @@ $header-h: 4.4rem;
           padding: 0 1rem;
           font-size: 1.2rem;
           background-color: rgba(240, 255, 255, 0.2);
-        }
-        .logo {
-          height: 100%;
         }
       }
     }

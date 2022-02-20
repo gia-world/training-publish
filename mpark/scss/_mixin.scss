@@ -1,0 +1,59 @@
+@mixin font($s, $w: null, $f: null) {
+  font: {
+    family: $f;
+    size: $s;
+    weight: $w;
+  }
+}
+
+@mixin after($w, $h) {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: $w;
+    height: $h;
+    @content;
+  }
+}
+
+@mixin before($w, $h) {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: $w;
+    height: $h;
+    @content;
+  }
+}
+
+@mixin bg($url, $po: center center, $si: cover) {
+  background: {
+    image: url("#{$url}");
+    repeat: no-repeat;
+    position: $po;
+    size: $si;
+  }
+  @content;
+}
+
+@mixin ib-parent($h, $fs: 0) {
+  height: $h;
+  line-height: $h;
+  font-size: $fs;
+}
+
+@mixin ib-child($lh: 1.4rem, $fs: 1.4rem) {
+  display: inline-block;
+  line-height: $lh;
+  vertical-align: middle;
+  font-size: $fs;
+}
+
+@mixin layout {
+  width: 1200px;
+  margin: 0 auto;
+}
