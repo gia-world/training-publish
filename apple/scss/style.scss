@@ -16,10 +16,17 @@ $header-h: 4.4rem;
   height: $header-h;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
-  .gnb {
-    max-width: 98rem;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1024px;
     height: 100%;
     margin: 0 auto;
+  }
+  .gnb {
+    // max-width: 98rem;
+    height: 100%;
+    // margin: 0 auto;
     > ul {
       display: flex;
       height: 100%;
@@ -40,6 +47,11 @@ $header-h: 4.4rem;
         }
       }
     }
+  }
+  .etc-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
@@ -67,12 +79,15 @@ $header-h: 4.4rem;
     flex-wrap: wrap;
   }
   section {
-      background-color: antiquewhite;
+    background-color: blueviolet;
     .section__inner {
       height: 100%;
       padding-top: 5rem;
       text-align: center;
       // background-color:cadetblue;
+    }
+    &:nth-child(even) {
+      background: red;
     }
     + section.wide {
       margin-top: 1rem;
@@ -99,13 +114,13 @@ $header-h: 4.4rem;
             display: inline-block;
             font-size: 2rem;
             &.new {
-          // margin-top: -0.8rem;
+              // margin-top: -0.8rem;
               color: goldenrod;
               font-weight: 300;
-              &-type2{
+              &-type2 {
                 font-size: 1.6rem;
-                  // font-weight: 300;
-                }
+                // font-weight: 300;
+              }
             }
             // &.new-type2{
             //   font-size: 1.8rem;
@@ -178,10 +193,9 @@ $header-h: 4.4rem;
       width: calc(50% - 0.5rem);
       height: 62rem;
       margin-top: 1rem;
-      .section__inner{
+      .section__inner {
         max-width: 60%;
         margin: 0 auto;
-
       }
       // [class*="title-"]{
       //   // max-width: 30rem;
@@ -194,11 +208,11 @@ $header-h: 4.4rem;
       .sub-tit {
         font-size: 2.1rem;
       }
-      &.bottom{
-        .section__inner{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+      &.bottom {
+        .section__inner {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
           padding-bottom: 5rem;
         }
       }

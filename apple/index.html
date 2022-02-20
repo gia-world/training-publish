@@ -11,35 +11,43 @@
 
 <body>
     <header class="header">
-        <nav class="gnb">
-            <ul>
-                <li>
-                    <h1 class="logo"><a href="#">로고</a></h1>
-                </li>
-                <li><a href="#">스토어</a></li>
-                <li><a href="#">Mac</a></li>
-                <li><a href="#">iPad</a></li>
-                <li><a href="#">iPhone</a></li>
-                <li><a href="#">Watch</a></li>
-                <li><a href="#">Airpods</a></li>
-                <li><a href="#">TV 및 홈</a></li>
-                <li><a href="#">Apple 독점 제공</a></li>
-                <li><a href="#">액세서리</a></li>
-                <li><a href="#">고객지원</a></li>
+        <div class="header__inner">
+            <div class="logo-wrap">
+                <h1 class="logo"><a href="#">로고</a></h1>
+            </div>
+            <nav class="gnb">
+                <ul>
+                    <li><a href="#">스토어</a></li>
+                    <li><a href="#">Mac</a></li>
+                    <li><a href="#">iPad</a></li>
+                    <li><a href="#">iPhone</a></li>
+                    <li><a href="#">Watch</a></li>
+                    <li><a href="#">Airpods</a></li>
+                    <li><a href="#">TV 및 홈</a></li>
+                    <li><a href="#">Apple 독점 제공</a></li>
+                    <li><a href="#">액세서리</a></li>
+                    <li><a href="#">고객지원</a></li>
+                </ul>
+            </nav>
+            <ul class="etc-wrap">
                 <li><a href="#">검색</a></li>
                 <li><a href="#">장바구니</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
     <main class="contents">
-        <aside class="bnr">
+        <h2 class="sr-only">애플 메인페이지</h2>
+        <section class="bnr">
+            <h3 class="sr-only">
+                온라인 쇼핑 안내
+            </h3>
             <p>
                 <a href="#">온라인으로 쇼핑</a>하고 무료 배송, 스페셜리스트 지원 등의 혜택을 받으세요.
             </p>
-        </aside>
+        </section>
         <section class="wide">
             <div class="section__inner">
-                <h2 class="title-type1">iPhone 13 Pro</h2>
+                <h3 class="title-type1">iPhone 13 Pro</h3>
                 <p class="sub-tit">이게 바로 프로.</p>
                 <div class="link-wrap">
                     <a href="#">
@@ -172,6 +180,42 @@
             </section>
         </article>
     </main>
+    <script>
+        const $el = document.querySelector('body');
+        $el.addEventListener('click', (aaa) => {
+            aaa.target.classList.add('red')
+            console.log(aaa.target)
+        })
+
+        const a = (data, status){
+            $(".wrap").html(data + "<BR>" + status)
+        }
+        $(function () {
+            $(".btn").click(function () {
+                $.get("load.html", a)
+            })
+        })
+
+
+        const any = (func) => {
+            const v = 'v'
+
+            //
+            //
+            return () => { func(v, 200) }
+        }
+        const anyResultFunc = any(a)
+        anyResultFunc()
+        // 이크마스크립트가 있다.
+
+
+        // 이놈이 브라우저에 탓다.
+        // 그러면 브라우저에 내장된 에이피아이랑 합체해서 자바스크립트
+
+
+        // 이놈이 노드에 탓다
+        // 그러면 맥오에스나 윈도우같은거에서 돌기위한 에이피아이와 합체해서 자바스크립트
+    </script>
 </body>
 
 </html>
