@@ -1,7 +1,10 @@
-body{
-    background-color: beige;
+body {
+  background-color: beige;
 }
 
-h1{
-    color: thistle;
+h1 {
+  color: thistle;
+}
+
+#title {
 }
