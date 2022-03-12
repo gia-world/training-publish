@@ -59,7 +59,8 @@ console.log("가격은" + Number(52000 + 20000) + "원입니다"); //가격은 7
 const productPrice = 52000;
 console.log(typeof productPrice.toString()); //string
 
-//falsy값 : false, undefined, null, 0, -0, NaN, ""
+//falsy: false, undefined, null, 0, -0, NaN, ""
+//truthy: falsy값 6개 이외의 모든 값
 
 //명시적 타입변환
 //문자열 타입으로
