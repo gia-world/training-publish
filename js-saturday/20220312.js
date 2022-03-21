@@ -96,3 +96,14 @@ const msg = userName || "고객";
 console.log(`어서오세요 ${msg}님`);
 // userName 이 null 이거나 falsy면 고객님 출력
 // user name 값이 있으면 값 출력
+
+const guys = [
+  { name: "YD", money: 500000 },
+  { name: "Bill", money: 400000 },
+  { name: "Andy", money: 300000 },
+  { name: "Roky", money: 200000 },
+];
+const richNames = guys
+  .filter((man) => man.money > 300000)
+  .map((man) => man.name);
+console.log(richNames); // ["YD", "Bill"]

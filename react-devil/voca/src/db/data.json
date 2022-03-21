@@ -26,6 +26,13 @@
       "isDone": false
     },
     {
+      "id": 13,
+      "day": 1,
+      "eng": "apple",
+      "kor": "사과",
+      "isDone": true
+    },
+    {
       "id": 3,
       "day": 2,
       "eng": "car",
