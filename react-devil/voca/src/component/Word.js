@@ -21,6 +21,7 @@ export default function Word({ word }) {
         <button onClick={toggleShow}>뜻 {isShow ? "숨기기" : "보기"}</button>
         <button className="btn_del">삭제</button>
       </td>
+      {isShow && <div>i see you</div>}
     </tr>
   );
 }
