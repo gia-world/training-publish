@@ -83,9 +83,9 @@ Boolean("false"); //true
 // "cat" -> truty
 // "cat" && 00 -> 캣이 있다면 00이야
 
-let myPet;
-const myPetName = myPet && "츠키"; //undefined
-const myPetName = myPet || "츠키"; //츠키
+let myPet1;
+const myPetName1 = myPet && "츠키"; //undefined
+const myPetName2 = myPet || "츠키"; //츠키
 // myPet || 00 -> mypet이 없으면 기본값이 00이야
 
 let myPet = "고양이";
