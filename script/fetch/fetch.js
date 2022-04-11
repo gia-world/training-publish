@@ -29,12 +29,14 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
 function getPokemon() {
   const pokemon = fetch(
     "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
-  )
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-  // .then((data) => print(data));
+  ).then((response) => response.json());
+  // .then((data) => console.log(data));
+  // return pokemon;
   // 이 data를 어떻게 return 해야하는지..?
-  return pokemon;
+
+  // -> 화살표 함수에 대한 이해 부족!
+  //33번 줄의 (response) => response.json() 은
+  // (response) => {return response.json()} 과 같다.
 }
 
 getPokemon().then(console.log);

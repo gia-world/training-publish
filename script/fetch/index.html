@@ -9,7 +9,27 @@
 </head>
 
 <body>
-    <script src="./fetch.js"></script>
+    <ul></ul>
+    <!-- <script src="./fetch.js"></script> -->
+    <script>
+        const $ul = document.querySelector('ul')
+        async function getPokemon() {
+            const pokemon = await fetch(
+                "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
+            ).then((res) => res.json());
+
+            console.log(pokemon)
+
+            for (let index = 0; index < pokemon.results.length; index++) {
+                console.log(pokemon.results[index])
+                const $div = document.createElement('div')
+                $div.innerText = pokemon.results[index].name
+                $ul.appendChild($div)
+            }
+
+        }
+        getPokemon()
+    </script>
 </body>
 
 </html>
