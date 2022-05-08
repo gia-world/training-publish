@@ -1,12 +1,15 @@
 import React from "react";
 import Task from "./Task";
 
-const Main = () => {
+const Main = ({ tasks, setTasks }) => {
   return (
     <main>
       {/* length>0? <Task/> : 'No Tasks' */}
-      No Tasks
-      <Task />
+      {tasks.length > 0
+        ? tasks.map((task, i) => (
+            <Task key={i} task={task} setTasks={setTasks}></Task>
+          ))
+        : "No Tasks"}
     </main>
   );
 };

@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Add from "./Add";
 
-const Header = () => {
+const Header = ({ setTasks }) => {
+  const [isAddShow, setIsAddShow] = useState(false);
   return (
     <>
       <header className="header">
         <h1>Task Tracker</h1>
-        <button className="btn">Add</button>
+        <button
+          className="btn"
+          onClick={() => {
+            setIsAddShow(!isAddShow);
+          }}
+        >
+          {isAddShow ? "Close" : "Add"}
+        </button>
       </header>
-      <Add />
+      {isAddShow ? <Add setTasks={setTasks} /> : null}
     </>
   );
 };
