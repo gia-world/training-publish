@@ -1,7 +1,7 @@
 const emails = [
-  { value: 'naver.com', selected: true },
-  { value: 'gmail.com', selected: false },
-  { value: 'hanmail.net', selected: false },
+  { value: "naver.com", selected: true },
+  { value: "gmail.com", selected: false },
+  { value: "hanmail.net", selected: false },
 ];
 
 const numberOfProducts = [
@@ -11,7 +11,7 @@ const numberOfProducts = [
 ];
 
 function createDropdownItem(item) {
-  const option = document.createElement('option');
+  const option = document.createElement("option");
   option.value = item.value.toString();
   option.innerText = item.value.toString();
   option.selected = item.selected;
@@ -21,6 +21,6 @@ function createDropdownItem(item) {
 // NOTE: 이메일 드롭 다운 아이템 추가
 emails.forEach(function (email) {
   const item = createDropdownItem(email);
-  const selectTag = document.querySelector('#email-dropdown');
+  const selectTag = document.querySelector("#email-dropdown");
   selectTag.appendChild(item);
 });
