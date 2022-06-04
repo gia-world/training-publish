@@ -90,7 +90,7 @@
     length: number;
   }
   function logTextLength1<T extends LengthType>(text: T): T {
-    // LengthType에 있는 건 무조건 받아온다.
+    // interface에 있는 건 무조건 받아온다.
     text.length;
     return text;
   }
@@ -98,4 +98,20 @@
   logTextLength1("a"); //문자열은 length를 가지고 있기때문에 수용
   // logTextLength1(10); // error, number는 length를 가지고 있지않음
   logTextLength1({ length: 10 }); //length 속성이 들어간 객체도 수용가능
+
+  //* 제네릭 타입 제한 3 - keyof
+  interface ShoppingItem {
+    name: string;
+    price: number;
+    stock: number;
+  }
+  function getShoppingItemOption<T extends keyof ShoppingItem>(
+    itemOption: T
+  ): T {
+    // interface의 key 중에 한가지만 들어올 수 있다
+    return itemOption;
+  }
+  // getShoppingItemOption(10);
+  // getShoppingItemOption<string>("a");
+  getShoppingItemOption("name");
 }
