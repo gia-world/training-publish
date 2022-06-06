@@ -20,7 +20,7 @@ module.exports = {
         tabWidth: 2,
         printWidth: 80,
         bracketSpacing: true,
-        arrowParens: "avoid",
+        // arrowParens: "avoid", //화살표 함수 괄호 사용 방식
         endOfLine: "auto",
       },
     ],
