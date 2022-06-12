@@ -33,8 +33,14 @@ const Gugudan = () => {
         {first} * {second} = ?
       </div>
       <form onSubmit={onSubmitForm}>
-        <input ref={inputEl} type="number" value={value} onChange={(e) => setValue(e.target.value)} />
+        <input
+          ref={inputEl}
+          type="number"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
       </form>
+      <div>{result}</div>
     </>
   );
 };
