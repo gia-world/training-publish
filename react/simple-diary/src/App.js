@@ -1,8 +1,8 @@
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
-import { useRef, useState, useEffect, useMemo } from "react";
-import OptimizeTest from "./OptimizeTest";
+import { useRef, useState, useEffect, useMemo, useCallback } from "react";
+// import OptimizeTest from "./OptimizeTest";
 // import Lifecycle from "./Lifecycle";
 
 // const dummyList = [
@@ -57,7 +57,7 @@ const App = () => {
     getData();
   }, []);
 
-  const onCreate = (author, content, emotion) => {
+  const onCreate = useCallback((author, content, emotion) => {
     const created_date = new Date().getTime();
     const newItem = {
       author,
@@ -67,8 +67,8 @@ const App = () => {
       id: dataId.current,
     };
     dataId.current += 1;
-    setData([newItem, ...data]);
-  };
+    setData((data) => [newItem, ...data]);
+  }, []);
 
   const onRemove = (targetID) => {
     // console.log(`${targetID}가 삭제되었습니다.`);
@@ -97,7 +97,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <OptimizeTest />
+      {/* <OptimizeTest /> */}
       {/* <Lifecycle /> */}
       <DiaryEditor onCreate={onCreate} />
       <p>total : {data.length}</p>
