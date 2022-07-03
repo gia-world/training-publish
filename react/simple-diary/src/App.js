@@ -2,6 +2,7 @@ import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
 import { useRef, useState, useEffect, useMemo } from "react";
+import OptimizeTest from "./OptimizeTest";
 // import Lifecycle from "./Lifecycle";
 
 // const dummyList = [
@@ -35,7 +36,9 @@ const App = () => {
   const dataId = useRef(0);
 
   const getData = async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/comments").then((res) => res.json());
+    const res = await fetch(
+      "https://jsonplaceholder.typicode.com/comments"
+    ).then((res) => res.json());
     // console.log(res);
     const initData = res.slice(0, 20).map((it) => {
       return {
@@ -46,6 +49,7 @@ const App = () => {
         id: dataId.current++,
       };
     });
+    // console.log(initData);
     setData(initData);
   };
 
@@ -67,19 +71,22 @@ const App = () => {
   };
 
   const onRemove = (targetID) => {
-    console.log(`${targetID}가 삭제되었습니다.`);
+    // console.log(`${targetID}가 삭제되었습니다.`);
     const newDiaryList = data.filter((it) => it.id !== targetID);
-    console.log(newDiaryList);
+    // console.log(newDiaryList);
     setData(newDiaryList);
   };
 
   const onEdit = (targetId, newContent) => {
-    setData(data.map((it) => (it.id === targetId ? { ...it, content: newContent } : it)));
+    setData(
+      data.map((it) =>
+        it.id === targetId ? { ...it, content: newContent } : it
+      )
+    );
   };
 
   const getDiaryAnalysis = useMemo(() => {
-    console.log("일기 분석 시작");
-
+    // console.log("일기 분석 시작");
     const goodCount = data.filter((it) => it.emotion >= 3).length;
     const badCount = data.length - goodCount;
     const goodRatio = (goodCount / data.length) * 100;
@@ -90,6 +97,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <OptimizeTest />
       {/* <Lifecycle /> */}
       <DiaryEditor onCreate={onCreate} />
       <p>total : {data.length}</p>

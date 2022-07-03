@@ -8,9 +8,6 @@ const DiaryEditor = ({ onCreate }) => {
     content: "",
     emotion: 1,
   });
-  //* 질문: useState import 추가하는 단축키??
-  //   const [author, setAuthor] = useState("Gia");
-  //   const [contents, setContents] = useState("");
 
   const handleChangeState = (e) => {
     setState({
