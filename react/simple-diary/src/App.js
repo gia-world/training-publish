@@ -1,7 +1,14 @@
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
-import { useRef, useState, useEffect, useMemo, useCallback } from "react";
+import React, {
+  useRef,
+  // useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  useReducer,
+} from "react";
 // import OptimizeTest from "./OptimizeTest";
 // import Lifecycle from "./Lifecycle";
 
@@ -29,9 +36,38 @@ import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 //   },
 // ];
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "INIT": {
+      return action.data;
+    }
+    case "CREATE": {
+      const created_date = new Date().getTime();
+      const newItem = {
+        ...action.data,
+        created_date,
+      };
+      return [newItem, ...state];
+    }
+    case "REMOVE": {
+      return state.filter((it) => it.id !== action.targetId);
+    }
+    case "EDIT": {
+      return state.map((it) =>
+        it.id === action.targetId ? { ...it, content: action.newContent } : it
+      );
+    }
+    default:
+      return state;
+  }
+};
+
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
+
 const App = () => {
-  // function App() {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  const [data, dispatch] = useReducer(reducer, []);
 
   const dataId = useRef(0);
 
@@ -50,7 +86,8 @@ const App = () => {
       };
     });
     // console.log(initData);
-    setData(initData);
+    // setData(initData);
+    dispatch({ type: "INIT", data: initData });
   };
 
   useEffect(() => {
@@ -58,32 +95,43 @@ const App = () => {
   }, []);
 
   const onCreate = useCallback((author, content, emotion) => {
-    const created_date = new Date().getTime();
-    const newItem = {
-      author,
-      content,
-      emotion,
-      created_date,
-      id: dataId.current,
-    };
+    dispatch({
+      type: "CREATE",
+      data: { author, content, emotion, id: dataId.current },
+    });
+    // const created_date = new Date().getTime();
+    // const newItem = {
+    //   author,
+    //   content,
+    //   emotion,
+    //   created_date,
+    //   id: dataId.current,
+    // };
     dataId.current += 1;
-    setData((data) => [newItem, ...data]);
+    // setData((data) => [newItem, ...data]);
   }, []);
 
-  const onRemove = (targetID) => {
+  const onRemove = useCallback((targetId) => {
     // console.log(`${targetID}가 삭제되었습니다.`);
-    const newDiaryList = data.filter((it) => it.id !== targetID);
+    // const newDiaryList = data.filter((it) => it.id !== targetID);
     // console.log(newDiaryList);
-    setData(newDiaryList);
-  };
+    // setData(newDiaryList);
+    // setData((data) => data.filter((it) => it.id !== targetID));
+    dispatch({ type: "REMOVE", targetId });
+  }, []);
 
-  const onEdit = (targetId, newContent) => {
-    setData(
-      data.map((it) =>
-        it.id === targetId ? { ...it, content: newContent } : it
-      )
-    );
-  };
+  const onEdit = useCallback((targetId, newContent) => {
+    // setData((data) =>
+    //   data.map((it) =>
+    //     it.id === targetId ? { ...it, content: newContent } : it
+    //   )
+    // );
+    dispatch({ type: "EDIT", targetId, newContent });
+  }, []);
+
+  const memoizedDispatches = useMemo(() => {
+    return { onCreate, onRemove, onEdit };
+  }, []);
 
   const getDiaryAnalysis = useMemo(() => {
     // console.log("일기 분석 시작");
@@ -96,16 +144,22 @@ const App = () => {
   const { goodCount, badCount, goodRatio } = getDiaryAnalysis;
 
   return (
-    <div className="App">
-      {/* <OptimizeTest /> */}
-      {/* <Lifecycle /> */}
-      <DiaryEditor onCreate={onCreate} />
-      <p>total : {data.length}</p>
-      <p>number of good day : {goodCount}</p>
-      <p>number of bad day : {badCount}</p>
-      <p>Ratio of good and bad day : {goodRatio}</p>
-      <DiaryList onEdit={onEdit} onRemove={onRemove} diaryList={data} />
-    </div>
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispatchContext.Provider value={memoizedDispatches}>
+        <div className="App">
+          {/* <OptimizeTest /> */}
+          {/* <Lifecycle /> */}
+          {/* <DiaryEditor onCreate={onCreate} /> */}
+          <DiaryEditor />
+          <p>total : {data.length}</p>
+          <p>number of good day : {goodCount}</p>
+          <p>number of bad day : {badCount}</p>
+          <p>Ratio of good and bad day : {goodRatio}</p>
+          {/* <DiaryList onEdit={onEdit} onRemove={onRemove} diaryList={data} /> */}
+          <DiaryList />
+        </div>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 };
 
