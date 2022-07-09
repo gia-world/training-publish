@@ -1,14 +1,20 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { DiaryDispatchContext } from "./App";
 
 const DiaryItem = ({
-  onEdit,
-  onRemove,
+  // onEdit,
+  // onRemove,
   author,
   content,
   emotion,
   created_date,
   id,
 }) => {
+  // useEffect(() => {
+  //   console.log(`${id}th item rendered`);
+  // });
+  const { onRemove, onEdit } = useContext(DiaryDispatchContext);
+
   const [isEdit, setIsEdit] = useState(false);
   const toggleIsEdit = () => setIsEdit(!isEdit);
 
@@ -16,8 +22,8 @@ const DiaryItem = ({
   const localContentInput = useRef();
 
   const handleRemove = () => {
-    console.log(id);
-    if (window.confirm(`${id}번째 일기를 삭제하시겠습니까?`)) {
+    // console.log(id);
+    if (window.confirm(`${id + 1}번째 일기를 삭제하시겠습니까?`)) {
       onRemove(id);
     }
   };
@@ -32,7 +38,7 @@ const DiaryItem = ({
       localContentInput.current.focus();
       return;
     }
-    if (window.confirm(`${id}번 째 일기를 수정하시겠습니까?`))
+    if (window.confirm(`${id + 1}번 째 일기를 수정하시겠습니까?`))
       onEdit(id, localContent);
     toggleIsEdit();
   };
@@ -72,4 +78,4 @@ const DiaryItem = ({
   );
 };
 
-export default DiaryItem;
+export default React.memo(DiaryItem);

@@ -1,6 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
+import { DiaryDispatchContext } from "./App";
 
-const DiaryEditor = ({ onCreate }) => {
+const DiaryEditor = () => {
+  const { onCreate } = useContext(DiaryDispatchContext);
+  // useEffect(() => {
+  //   console.log("DiaryEditor rendered");
+  // });
+
   const authorInput = useRef();
   const contentsInput = useRef();
   const [state, setState] = useState({
@@ -8,9 +14,6 @@ const DiaryEditor = ({ onCreate }) => {
     content: "",
     emotion: 1,
   });
-  //* 질문: useState import 추가하는 단축키??
-  //   const [author, setAuthor] = useState("Gia");
-  //   const [contents, setContents] = useState("");
 
   const handleChangeState = (e) => {
     setState({
@@ -85,4 +88,4 @@ const DiaryEditor = ({ onCreate }) => {
   );
 };
 
-export default DiaryEditor;
+export default React.memo(DiaryEditor);
