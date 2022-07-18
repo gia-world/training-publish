@@ -37,6 +37,8 @@
             var newState;
             if (action.type === 'CHANGE_COLOR') {
                 newState = Object.assign({}, state, { color: action.color }) // state의 복제본
+                // const{color}=action
+                //  newState={...state,color}
                 // state.color = 'red'
             }
             return newState;
@@ -44,6 +46,7 @@
         var store = Redux.createStore(reducer)
         console.log(store.getState())
         function red() {
+            console.log('watch1')
             var state = store.getState()
             document.querySelector('#red').innerHTML =
                 ` <div class='container' id='component_red' style="background-color:${state.color}">
@@ -53,9 +56,12 @@
                     ">
                     </div>`
         }
-        store.subscribe(red) //state값이 바뀔 때마다 red 값이 호출됨
+        //state값이 바뀔 때마다 red 값이 호출됨
         red()
+        store.subscribe(red)
+        // document.addEventListener('스토어바뀌면',()=>{})
         function blue() {
+            console.log('watch2')
             var state = store.getState()
             document.querySelector('#blue').innerHTML =
                 ` <div class='container' id='component_red' style="background-color:${state.color}">
@@ -65,9 +71,11 @@
                     ">
                     </div>`
         }
-        store.subscribe(blue)
+        // store.subscribe(blue)
+
         blue()
         function green() {
+            console.log('watch3')
             var state = store.getState()
             document.querySelector('#green').innerHTML =
                 ` <div class='container' id='component_red' style="background-color:${state.color}">
@@ -79,23 +87,86 @@
         }
         store.subscribe(green)
         green()
+
+        // const store2 = {
+        //     state: [1, 2, 3, 4],
+        //     subscribe(f) {
+        //         f()
+        //         console.log('change!!!! watch!!!')
+        //     },
+        //     change() {
+        //         const nextState = [1, 2, 3, 4, 5]
+        //         if (this.state !== nextState) {
+        //             this.subscribe()
+        //         }
+        //     }
+        // }
+        // store2.change()
     </script>
 </body>
 <!-- 
     리덕스가 없을때의 코드는 컴포넌트끼리 강하게 커플링(의존)되어있음.
     있다고 기대했다가 없어지면 에러가 발생.
     리덕스(중개자) : 상태를 중앙집중적으로 관리
-    1. 상태가 바뀌었을때 , 그 액션(상태가 바뀌었다는)을 스토어에 디스패치함
-    2. 그에 따라 자신이 어떻게 변화할 지에 대한 코드를 스토어에 구독시킴
-    3. 스테이트가 바뀔때 마다 통보 됨
-    4. 그때마다 자신의 모양을 바꿔줌
+    1. 상태를 바꾸려고 할 때 , 상태를 바꾸기 위한 엑션을 스토어에 디스패치함 "해줘" 리듀서에 시전
+    2. 리듀서는 엑션({타입:"무엇을 하시오", 페이로드:'이걸로해줭/재료'})을 받아서 값을 구해서 스토어에 반영함 (실질적인 변경자)
+    3.ㅇㅇ? 올 ㅋ 다댔음? 지켜보고있다가 완료되면 뭔가 하려는 놈이 있다. (구독하고 있다. 감시하고 있다.) //이놈한테 콜백함수 주면 될듯.. (스테이트가 바뀔때 마다 통보 됨)
+    4. 그때마다 자신의 모양을 바꿔줌(랜더)
     => 각 컴포넌트는 자신의 역할에만 집중하면 됨, 하나가 바뀌어도 영향 x
 
  -->
 
+리엑트 스테이트 안쓰고,
+왜. 스토어 씁니까
+
+
+
+
+롯데리아
+
+지혜 햄버거를 쏜대
+불고기버거 셋트 하나, 치즈버거 셋트 하나를 시켰어
+
+누나 (뭐 주세요.) 엑션.페이로드 (외계인다진고기)
+==========
+알바 야 이거 만들어 디스패치
+
+=========
+뒷주방 실질적인 값을 변경 및 가공 리듀서
+
+
+
+const store={
+카운트:0
+}
+
+store.카운트="kkkkkkkkkkkkkkk"
+
+^^ 쉽게 못바꾼다.이제 ㅎㅎ;;;
+
+? 그럼 어떻게 하지?
+? 그러면서도 구조적이여야...
+
+아..? 그럼 내가 정한 방식으로만 바꿀 수 있게 룰을 만들자.
+
+스토어 리드온리
+
+
+copnsole.log(store)
+
+store.state=0
+
+{
+const store
+
+getStore(){
+return store
+}
+}
+
 <!-- 
     * 개념 재정리
-    store : 정보가 저장되는 곳. ex)은행
+    store : 정보가 저장되는 곳. 전역적으로 호출 가능  ex)은행
         state : 실제 정보. readonly 이어야함. ex) 돈/장부
         reducer : 함수. 직접 만들어서 공급해야함. state 가공자.
                 state를 입력값으로 받고 액션을 참조해서 새로운 스테이트값을 만들어서 리턴.
