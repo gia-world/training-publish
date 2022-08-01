@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
+        integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div id="subject"></div>
+    <div id="toc"></div>
+    <div id="control"></div>
+    <div id="content"></div>
+
+    <script>
+        // 모듈화
+        function subject() {
+            document.querySelector('#subject').innerHTML = `
+            <header>
+                <h1>WEB</h1>
+                Hello, WEB!
+            </header>
+            `
+        }
+
+        function TOC() {
+            //TOC = table of content, 글목록
+            var state = store.getState()
+            var i = 0;
+            var liTags = '';
+            while (i < state.contents.length) {
+                liTags = liTags + `
+                <li>
+                    <a onclick="event.preventDefault();
+                        //action 생성
+                        var action = {type:'SELECT', id:${state.contents[i].id}};
+                        //store에 action 전달
+                        store.dispatch(action)" href="${state.contents[i].id}">${state.contents[i].title}</a>
+                    </li>
+                `
+                i++;
+            }
+            document.querySelector('#toc').innerHTML = `
+            <nav>
+                <ol>
+                    ${liTags}
+                    </ol>
+                    </nav>
+                    `
+        }
+
+        function control() {
+            document.querySelector('#control').innerHTML = `
+        <ul>
+            <li><a onclick="
+                event.preventDefault();
+
+                " href="/create">create</a></li>
+            <li><button value="delete">delete</button></li>
+        </ul>
+            `
+        }
+
+        function article() {
+            //subscribe를 통해 자동 갱신 되도록 밑작업
+            var state = store.getState()
+            if (state.mode === 'create') {
+                document.querySelector('#content').innerHTML = `
+                    <article>
+                        <form onsubmit="
+                            event.preventDefault();
+                            var _title= this.title.value;
+                            var _desc= this.desc.value;
+                            store.dispatch({
+                                type:'CREATE',
+                                title:_title,
+                                desc:_desc
+                            })
+                        ">
+                            <p>
+                                <input type="text" name="title" placeholder="title">
+                                </p>
+                            <p>
+                                <textarea name="desc" placeholder="description"></textarea>
+                                </p>
+                            <p>
+                                <input type="submit">
+                                </p>
+                            </form>
+                    </article>
+                    `
+            } else if (state.mode === 'read') {
+                var i = 0;
+                var aTitle, aDesc;
+                while (i < state.contents.length) {
+                    if (state.contents[i].id === state.selected_id) {
+                        aTitle = state.contents[i].title;
+                        aDesc = state.contents[i].desc;
+                        break;
+                    }
+                    i++;
+                }
+                document.querySelector('#content').innerHTML = `
+                    <article>
+                        <h2>${aTitle}</h2>
+                        ${aDesc}
+                    </article>
+                    `
+            }
+
+        }
+
+        function reducer(state, action) {
+            // store를 처음 생성하면 최초 1회 action과 상관없이 undefined의 state값이 들어옴
+            if (state === undefined) {
+                //초기값 세팅
+                return {
+                    max_id: 2,
+                    mode: 'create',
+                    selected_id: 2,
+                    contents: [
+                        { id: 1, title: 'HTML', desc: 'HTML is ...' },
+                        { id: 2, title: 'CSS', desc: 'CSS is ...' },
+                    ]
+                }
+            }
+            var newState;
+            if (action.type === 'SELECT') {
+                //state 사본 만들기
+                newState = Object.assign({}, state, { selected_id: action.id })
+                // const {id}=action
+                // newState={...state,selected_id};
+            } else if (action.type === 'CREATE') {
+                var newMaxID = state.max_id++;
+                var newContents = state.contents.concat();
+                newContents.push({ id: newMaxID, title: action.title, desc: action.desc })
+                newState = Object.assign({}, state, {
+                    max_id: newMaxID,
+                    contents: newContents,
+                    mode: 'read'
+                })
+            }
+            console.log(action, state);
+            console.log(newState);
+            return newState;
+        }
+        var store = Redux.createStore(reducer); // 앱 전역 변수화 시키기
+        store.subscribe(article);
+
+        subject();
+        TOC();
+        control();
+        article();
+    </script>
+</body>
+
+</html>
