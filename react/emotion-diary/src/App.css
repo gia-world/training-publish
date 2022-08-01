@@ -1,3 +1,99 @@
-.App {
-  padding: 20px;
+@font-face {
+  font-family: 'MYY';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/MYYeongnamnu.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SCD';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'SCD';
+  background-color: #f6f6f6;
+}
+
+@media (min-width:650px){
+  .App{
+    width: 640px;
+  }
+}
+
+@media (max-width:650px){
+  .App{
+    width: 90vw;
+  }
+}
+
+#root{
+  background-color: #fff;
+  box-shadow: rgba(100,100,111,0.2) 0 7px 29px 0;
+}
+
+.App{
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+/* MyButton */
+.MyButton{
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  white-space: nowrap;
+  font-size: 18px;
+  font-family: 'SCD';
+}
+
+.MyButton_default{
+  background-color: #ececec;
+  color: #000;
+}
+.MyButton_positive{
+  background-color: #64c964;
+  color: #fff;
+}
+.MyButton_negative{
+  background-color: #fd565f;
+  color: #fff;
+}
+
+/* HEADER */
+
+header{
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+header>div{
+  display: flex;
+}
+header .head_text{
+  width: 50%;
+  font-size: 25px;
+  justify-content: center;
+}
+
+header .head_btn_left{
+  width: 25%;
+  justify-content: start;
+}
+
+header .head_btn_right{
+  width: 25%;
+  justify-content: end;
+}
+
+header button{
+  font-family: 'MYY';
 }
