@@ -1,10 +1,57 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import MyHeader from "./../components/MyHeader";
+import MyButton from "./../components/MyButton";
+import { DiaryStateContext } from "../App";
+import DiaryList from "../components/DiaryList";
 
 const Home = () => {
+  const diaryList = useContext(DiaryStateContext);
+
+  //불러온 일기 데이터 월별로 가공하기
+  const [data, setData] = useState([]);
+
+  const [curDate, setCurDate] = useState(new Date());
+  const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
+  useEffect(() => {
+    if (diaryList.length >= 1) {
+      const firstDay = new Date(
+        curDate.getFullYear(),
+        curDate.getMonth(),
+        1
+      ).getTime(); //현재 년,월의 1일
+      const lastDay = new Date(
+        curDate.getFullYear(),
+        curDate.getMonth() + 1,
+        0
+      ).getTime(); //현재 년,월의 마지막날
+      setData(
+        diaryList.filter((it) => firstDay <= it.date && it.date <= lastDay)
+      );
+    }
+  }, [diaryList, curDate]);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  const increaseMonth = () => {
+    setCurDate(
+      new Date(curDate.getFullYear(), curDate.getMonth() + 1, curDate.getDate())
+    );
+  };
+  const decreaseMonth = () => {
+    setCurDate(
+      new Date(curDate.getFullYear(), curDate.getMonth() - 1, curDate.getDate())
+    );
+  };
+
   return (
     <div>
-      <h1>Home</h1>
-      <p>This is Home</p>
+      <MyHeader
+        headText={headText}
+        left={<MyButton text={"<"} onClick={decreaseMonth} />}
+        right={<MyButton text={">"} onClick={increaseMonth} />}
+      />
+      <DiaryList diaryList={data} />
     </div>
   );
 };
