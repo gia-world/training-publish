@@ -59,9 +59,18 @@
         <ul>
             <li><a onclick="
                 event.preventDefault();
-
+                store.dispatch({
+                    type:'CHANGE_MODE',
+                    mode:'create'
+                })
                 " href="/create">create</a></li>
-            <li><button value="delete">delete</button></li>
+            <li>
+                <button value="delete" onclick="
+                    store.dispatch({
+                        type:'DELETE'
+                    })
+                ">delete</button>
+            </li>
         </ul>
             `
         }
@@ -111,6 +120,13 @@
                         ${aDesc}
                     </article>
                     `
+            } else if (state.mode === 'welcome') {
+                document.querySelector('#content').innerHTML = `
+                    <article>
+                        <h2>Wecome</h2>
+                        Hello, Redux!!
+                    </article>
+                `
             }
 
         }
@@ -121,7 +137,7 @@
                 //초기값 세팅
                 return {
                     max_id: 2,
-                    mode: 'create',
+                    mode: 'welcome',
                     selected_id: 2,
                     contents: [
                         { id: 1, title: 'HTML', desc: 'HTML is ...' },
@@ -132,17 +148,34 @@
             var newState;
             if (action.type === 'SELECT') {
                 //state 사본 만들기
-                newState = Object.assign({}, state, { selected_id: action.id })
+                newState = Object.assign({}, state, { selected_id: action.id, mode: 'read' })
                 // const {id}=action
                 // newState={...state,selected_id};
             } else if (action.type === 'CREATE') {
-                var newMaxID = state.max_id++;
+                var newMaxID = state.max_id + 1;
                 var newContents = state.contents.concat();
                 newContents.push({ id: newMaxID, title: action.title, desc: action.desc })
                 newState = Object.assign({}, state, {
                     max_id: newMaxID,
                     contents: newContents,
                     mode: 'read'
+                })
+            } else if (action.type === 'DELETE') {
+                var newContents = [];
+                var i = 0;
+                while (i < state.contents.length) {
+                    if (state.selected_id !== state.contents[i].id) {
+                        newContents.push(state.contents[i])
+                    }
+                    i=i+1;
+                }
+                newState = Object.assign({}, state, {
+                    contents: newContents,
+                    mode: 'welcome'
+                })
+            } else if (action.type === 'CHANGE_MODE') {
+                newState = Object.assign({}, state, {
+                    mode: action.mode
                 })
             }
             console.log(action, state);
@@ -151,6 +184,7 @@
         }
         var store = Redux.createStore(reducer); // 앱 전역 변수화 시키기
         store.subscribe(article);
+        store.subscribe(TOC)
 
         subject();
         TOC();
