@@ -98,6 +98,7 @@ header button {
   font-family: "MYY";
 }
 
+/* DiaryList */
 .DiaryList nav {
   display: flex;
   justify-content: space-between;
@@ -123,6 +124,7 @@ header button {
   font-size: 18px;
 }
 
+/* DiaryItem */
 .DiaryItem {
   display: flex;
   justify-content: space-between;
@@ -173,4 +175,28 @@ header button {
 
 .DiaryItem .btn_wrapper{
   min-width: 70px;
+}
+
+/* DiaryEditor */
+.DiaryEditor{
+
+}
+
+.DiaryEditor section+section{
+  margin-top: 40px;
+}
+
+.DiaryEditor h4{
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.DiaryEditor .input_date{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ececec;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 20px;
 }
