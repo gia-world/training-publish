@@ -22,7 +22,11 @@ const Home = () => {
       const lastDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth() + 1,
-        0
+        0,
+        23,
+        59,
+        59
+        // 시간을 비교할때는 시분초까지 영향을 미침
       ).getTime(); //현재 년,월의 마지막날
       setData(
         diaryList.filter((it) => firstDay <= it.date && it.date <= lastDay)
@@ -30,7 +34,7 @@ const Home = () => {
     }
   }, [diaryList, curDate]);
   useEffect(() => {
-    console.log(data);
+    // console.log(data);
   }, [data]);
 
   const increaseMonth = () => {
