@@ -1,12 +1,14 @@
 @font-face {
   font-family: "MYY";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/MYYeongnamnu.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/MYYeongnamnu.woff2")
+    format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "SCD";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff") format("woff");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -162,36 +164,36 @@ header button {
   height: 100%;
 }
 
-.DiaryItem .info_wrapper{
+.DiaryItem .info_wrapper {
   margin-left: 20px;
   flex-grow: 1;
   cursor: pointer;
 }
 
-.DiaryItem .diary_preview{
- margin-top: 5px;
+.DiaryItem .diary_preview {
+  margin-top: 5px;
   font-size: 18px;
 }
 
-.DiaryItem .btn_wrapper{
+.DiaryItem .btn_wrapper {
   min-width: 70px;
 }
 
 /* DiaryEditor */
-.DiaryEditor{
-
+.DiaryEditor {
+  padding-bottom: 40px;
 }
 
-.DiaryEditor section+section{
+.DiaryEditor section + section {
   margin-top: 40px;
 }
 
-.DiaryEditor h4{
+.DiaryEditor h4 {
   font-size: 22px;
   font-weight: bold;
 }
 
-.DiaryEditor .input_date{
+.DiaryEditor .input_date {
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
@@ -199,4 +201,73 @@ header button {
   cursor: pointer;
   font-family: inherit;
   font-size: 20px;
+}
+
+.DiaryEditor .emotion_list_wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 2%;
+}
+
+.DiaryEditor textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 20px;
+  resize: vertical;
+  box-sizing: border-box;
+  font: inherit;
+  border: none;
+  border-radius: 6px;
+  background-color: #ececec;
+}
+
+.DiaryEditor .control_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* EmotionItem */
+.EmotionItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.EmotionItem img {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.EmotionItem span {
+  font-size: 18px;
+}
+
+.EmotionItem_off {
+  background-color: #ececec;
+}
+
+.EmotionItem_on_1 {
+  background-color: #64c964;
+  color: #fff;
+}
+.EmotionItem_on_2 {
+  background-color: #9dd772;
+  color: #fff;
+}
+.EmotionItem_on_3 {
+  background-color: #fdce17;
+  color: #fff;
+}
+.EmotionItem_on_4 {
+  background-color: #fd8446;
+  color: #fff;
+}
+.EmotionItem_on_5 {
+  background-color: #fd565f;
+  color: #fff;
 }

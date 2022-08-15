@@ -116,7 +116,7 @@ function App() {
   // env.PUBLIC_URL=env.PUBLIC_URL||'';
   return (
     <DiaryStateContext.Provider value={data}>
-      <DiaryDispatchContext.Provider value={(onCreate, onEdit, onRemove)}>
+      <DiaryDispatchContext.Provider value={{ onCreate, onEdit, onRemove }}>
         <BrowserRouter>
           <div className="App">
             {/* <MyHeader headText={"App"} left={<MyButton text={"left"} onClick={() => alert("left clicked")} />} right={<MyButton text={"right"} onClick={() => alert("right clicked")} />} />
