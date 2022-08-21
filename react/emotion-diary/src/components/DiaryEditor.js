@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { DiaryDispatchContext } from "./../App.js";
 
@@ -19,11 +25,11 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const [emotion, setEmotion] = useState(3);
   const [date, setDate] = useState(getStringDate(new Date()));
 
-  const { onCreate, onEdit,onRemove } = useContext(DiaryDispatchContext);
+  const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
 
-  const handleClickEmote = (emotion) => {
+  const handleClickEmote = useCallback((emotion) => {
     setEmotion(emotion);
-  };
+  }, []);
 
   const navigate = useNavigate();
 
@@ -57,21 +63,27 @@ const DiaryEditor = ({ isEdit, originData }) => {
     }
   }, [isEdit, originData]);
 
-  const handleRemove=()=>{
-    if(window.confirm('정말 삭제하시겠습니까?')){
-      onRemove(originData.id)
-      navigate('/',{replace:true})
+  const handleRemove = () => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      onRemove(originData.id);
+      navigate("/", { replace: true });
     }
-  }
+  };
 
   return (
     <div className="DiaryEditor">
       <MyHeader
         headText={isEdit ? "일기 수정하기" : "새 일기 쓰기"}
         left={<MyButton text={"< Back"} onClick={() => navigate(-1)} />}
-        right={isEdit&&(
-          <MyButton text={'삭제하기'} type={'negative'} onClick={handleRemove} />
-        )}
+        right={
+          isEdit && (
+            <MyButton
+              text={"삭제하기"}
+              type={"negative"}
+              onClick={handleRemove}
+            />
+          )
+        }
       />
       <div>
         <section>

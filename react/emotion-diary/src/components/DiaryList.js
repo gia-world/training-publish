@@ -14,9 +14,18 @@ const filterOptionList = [
   { value: "bad", name: "Bad emotion only" },
 ];
 
-const ControlMenu = ({ value, onChange, optionList }) => {
+const ControlMenu = React.memo(({ value, onChange, optionList }) => {
+  // 컴포넌트를 감싸면, 강화된 컴포넌트를 돌려주는 고착 컴포넌트
+  // 전달 받는 props의 값이 바뀌지 않으면 렌더링이 일어나지 않음
+  // useEffect(() => {
+  //   console.log("Control menu");
+  // });
   return (
-    <select className="ControlMenu" value={value} onChange={(e) => onChange(e.target.value)}>
+    <select
+      className="ControlMenu"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+    >
       {optionList.map((it, idx) => (
         <option key={idx} value={it.value}>
           {it.name}
@@ -24,7 +33,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
       ))}
     </select>
   );
-};
+});
 
 const DiaryList = ({ diaryList }) => {
   const navigate = useNavigate();
@@ -51,7 +60,8 @@ const DiaryList = ({ diaryList }) => {
 
     const copyList = JSON.parse(JSON.stringify(diaryList)); //원본을 건들지 않기 위해
 
-    const filteredList = filter === "all" ? copyList : copyList.filter((it) => filterCallBack(it));
+    const filteredList =
+      filter === "all" ? copyList : copyList.filter((it) => filterCallBack(it));
 
     const sortedList = filteredList.sort(compare);
     return sortedList;
@@ -60,15 +70,27 @@ const DiaryList = ({ diaryList }) => {
     <div className="DiaryList">
       <nav>
         <div className="left_col">
-          <ControlMenu value={sortType} onChange={setSortType} optionList={sortOptionList} />
-          <ControlMenu value={filter} onChange={setFilter} optionList={filterOptionList} />
+          <ControlMenu
+            value={sortType}
+            onChange={setSortType}
+            optionList={sortOptionList}
+          />
+          <ControlMenu
+            value={filter}
+            onChange={setFilter}
+            optionList={filterOptionList}
+          />
         </div>
         <div className="right_col">
-          <MyButton type={"positive"} text={"새 일기 쓰기"} onClick={() => navigate("/new")} />
+          <MyButton
+            type={"positive"}
+            text={"새 일기 쓰기"}
+            onClick={() => navigate("/new")}
+          />
         </div>
       </nav>
       {getProcessedDiaryList().map((it) => (
-        <DiaryItem key={it.id} {...it}/>
+        <DiaryItem key={it.id} {...it} />
       ))}
     </div>
   );

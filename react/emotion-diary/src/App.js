@@ -34,7 +34,7 @@ const reducer = (state, action) => {
       return state;
   }
 
-  localStorage.setItem('diary',JSON.stringify(newState))
+  localStorage.setItem("diary", JSON.stringify(newState));
   return newState;
 };
 
@@ -44,15 +44,19 @@ export const DiaryDispatchContext = React.createContext();
 function App() {
   const [data, dispatch] = useReducer(reducer, []);
 
-  useEffect(()=>{
-    const localData=localStorage.getItem('diary')
-    if(localData){
-      const diaryList=JSON.parse(localData).sort((a,b)=>parseInt(b.id)-parseInt(a.id)) //내림차순 정렬
-      dataId.current=parseInt(diaryList[0].id)+1
+  useEffect(() => {
+    const localData = localStorage.getItem("diary");
+    if (localData) {
+      const diaryList = JSON.parse(localData).sort(
+        (a, b) => parseInt(b.id) - parseInt(a.id)
+      ); //내림차순 정렬
 
-      dispatch({type:'INIT',data:diaryList})
+      if (diaryList.length >= 1) {
+        dataId.current = parseInt(diaryList[0].id) + 1;
+        dispatch({ type: "INIT", data: diaryList });
+      }
     }
-  },[])
+  }, []);
 
   const dataId = useRef(0);
   //CREATE
