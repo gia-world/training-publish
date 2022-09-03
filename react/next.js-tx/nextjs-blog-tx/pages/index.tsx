@@ -30,6 +30,9 @@ const Home: NextPage<Props> = ({ allPostsData }) => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+      <section className={utilStyles.headingMd}>
+        <p>[Self Introduction]</p>
+      </section>
       {/* Add this <section> tag below the existing <section> tag */}
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
